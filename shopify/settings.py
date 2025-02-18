@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'users',
     'home',
     'api',
+    'base',
     'rest_framework',
     'corsheaders',
 ]

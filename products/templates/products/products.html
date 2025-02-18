@@ -11,14 +11,14 @@
             <aside class="col-md-6">
     <article class="gallery-wrap"> 
     <div class="img-big-wrap">
-      <div> <a href="#"><img src="{{product.product_images.first.image.url}}"></a></div>
+      <div> <a href="#"><img  id="main-image" src="{{product.product_images.first.image.url}}"></a></div>
     </div> <!-- slider-product.// -->
-    <div class="thumbs-wrap">
+    <div class="thumbs-wrap" >
       
       {% for image in product.product_images.all %}
       
         <!-- Your code to display images here -->
-        <a href="#" class="item-thumb"> <img src="{{image.image.url}}"></a>
+        <a href="#" class="item-thumb" onclick="changeMainImage('{{ image.image.url }}')" > <img src="{{image.image.url}} "></a>
    
       {% endfor %}
     </div> <!-- slider-nav.// -->
@@ -115,6 +115,11 @@
   function get_correct_price(size){
     console.log(size)
     window.location.href = `http://127.0.0.1:8000/products/{{product.slug}}/?size=${size}`
+  }
+   
+  function changeMainImage(imageUrl) {
+    // Change the source of the main image
+    document.getElementById('main-image').src = imageUrl;
   }
 </script>
 {% endblock body %}
