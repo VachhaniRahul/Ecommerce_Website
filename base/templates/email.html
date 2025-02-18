@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+</head>
+<body>
+    <h1 style="text-align: center;">INVOICE</h1>
+    <hr>
+    
+    <table width="100%">
+        <tr>
+            <td><strong>Invoice Number:</strong> #123456</td>
+            <td align="right"><strong>Date:</strong> {% now "F d, Y" %}</td>
+        </tr>
+    </table>
+    
+    <h3>Billing To:</h3>
+    <p>{{username}}<br>123 Street Name<br>City, State, ZIP<br>Email: {{email}}</p>
+    
+    <table border="1" width="100%" cellspacing="0" cellpadding="8">
+        <tr style="background-color: #f2f2f2;">
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{item.product.product_name}}</td>
+            <td align="center">{{item.quantity}}</td>
+            <td align="right">{{ item.calculated_price }}</td>
+            <td align="right">{{item.get_product_price}}</td>
+        </tr>
+        {% endfor %}
+        
+        <tr>
+            <td colspan="3" align="right"><strong>Subtotal:</strong></td>
+            <td align="right">${{total_price}}</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right"><strong>Discount :</strong></td>
+            <td align="right">${{discounted_price}}</td>
+        </tr>
+        <tr style="background-color: #f2f2f2;">
+            <td colspan="3" align="right"><strong>Total:</strong></td>
+            <td align="right"><strong>${{after_discount_price}}</strong></td>
+        </tr>
+    </table>
+    
+    <h3>Payment Method:</h3>
+    <p>Credit Card</p>
+    <hr>
+    <p style="text-align: center;"><strong>Thank you for your business!</strong></p>
+</body>
+</html>

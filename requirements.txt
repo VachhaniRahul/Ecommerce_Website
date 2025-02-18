@@ -1,0 +1,7 @@
+django
+pillow
+xhtml2pdf
+whitenoise
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
