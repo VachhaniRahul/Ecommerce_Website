@@ -9,7 +9,7 @@ def save_pdf(param:dict):
     html = template.render(param)
     response = BytesIO()
     pdf = pisa.pisaDocument(BytesIO(html.encode('UTF-8')), response)
-    file_name = 'Shopify'
+    file_name = param['name']
 
     try :
         with open(f'static/pdf/{file_name}.pdf', 'wb') as output:
@@ -36,7 +36,7 @@ def send_email_with_pdf(email):
     )
 
     # Attach PDF
-    pdf_path = 'static/pdf/Shopify.pdf'
+    pdf_path = f'static/pdf/{email}.pdf'
     with open(pdf_path, 'rb') as pdf_file:
         mail.attach('invoice.pdf', pdf_file.read(), 'application/pdf')
 
@@ -45,3 +45,4 @@ def send_email_with_pdf(email):
         invoice.save()
 
     mail.send()
+    return invoice

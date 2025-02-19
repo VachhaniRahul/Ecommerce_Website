@@ -77,7 +77,8 @@ def send_email_token(sender, instance, created, **kwargs):
             email_token = str(uuid.uuid4())
             Profile.objects.create(user = instance , email_token = email_token)
             email = instance.email
-            send_profile_activation_email(email, email_token)
+            # send_profile_activation_email(email, email_token)
+            send_profile_activation_email.delay(email, email_token)  
     except Exception as e:
         print(e)
 

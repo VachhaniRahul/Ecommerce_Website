@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'base',
     'rest_framework',
     'corsheaders',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -192,3 +193,9 @@ EMAIL_HOST_USER = 'django.learning.testing@gmail.com'
 EMAIL_HOST_PASSWORD = 'ispoojkxpnaspwyz'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Using Redis as broker
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+# Use Redis as a result backend
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'

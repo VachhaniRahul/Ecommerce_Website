@@ -1,0 +1,3 @@
+celery -A shopify worker --loglevel=info
+celery -A shopify beat --loglevel=info
+celery -A shopify beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler

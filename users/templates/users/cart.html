@@ -33,13 +33,14 @@
                                     </figure>
                                 </td>
                                 <td>
-                                    <select class="form-control"
+                                    {% comment %} <select class="form-control"
                                         onchange="update_cart_quantity('{{ item.uid }}', this.value)">
                                         <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1</option>
                                         <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2</option>
                                         <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3</option>
                                         <option value="4" {% if item.quantity == 4 %}selected{% endif %}>4</option>
-                                    </select>
+                                    </select> {% endcomment %}
+                                    <input type="number" onchange="update_cart_quantity('{{ item.uid }}', this.value)" value={{item.quantity}}>
                                 </td>
                                 <td>
                                     <div class="price-wrap">

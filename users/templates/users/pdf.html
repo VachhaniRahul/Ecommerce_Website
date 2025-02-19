@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View PDF</title>
+</head>
+{% load static %}
+<body>
+    <h2>View PDF in Browser</h2>
+    <h1>{{file_name}}</h1>
+    <embed src="{{ file_name }}" type="application/pdf" width="100%" />    <br>
+    <a href="{{ file_name }}">Download PDF</a>
+</body>
+</html>

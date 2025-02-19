@@ -33,7 +33,8 @@ def login_page(request):
         if user_obj :
             login(request, user_obj)
             messages.success(request, 'successfully login')
-            return redirect('index')
+            next_url = request.GET.get('next')
+            return redirect(next_url if next_url else 'index')
         
         messages.warning(request, 'Invalid Credentials')
     return render(request, 'users/login.html')
@@ -190,6 +191,7 @@ def confirm_order(request, uid):
     cart = Cart.objects.get(uid = uid)
     cart.is_paid = True
     cart.save()
+    name = cart.user.username
     username = cart.user.first_name
     items = cart.cart_items.all()
     after_discount_price , discounted_price, total_price  = cart.get_cart_total()
@@ -198,12 +200,12 @@ def confirm_order(request, uid):
         item.calculated_price = item.product.get_product_price_by_size(item.size_variant.size_name)
         print(item.calculated_price)
    
-    save_pdf({'username': username, 'items':items, 'after_discount_price':after_discount_price, 'discounted_price':discounted_price, 'total_price':total_price})
+    file_name , _ = save_pdf({'name': name,'username': username, 'items':items, 'after_discount_price':after_discount_price, 'discounted_price':discounted_price, 'total_price':total_price})
    
-    send_email_with_pdf(cart.user.email)
-   
+    invoice = send_email_with_pdf(cart.user.email)
+    
 
-    return HttpResponse('Done Check Your mail')
+    return render(request, 'users/pdf.html', {'file_name': invoice.file.url})
 
 
 
