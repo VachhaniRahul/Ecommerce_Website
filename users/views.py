@@ -104,7 +104,8 @@ def cart(request):
     
     quantity = request.GET.get('quantity')
     item_uid = request.GET.get('item-uid')
-
+    print(item_uid)
+    print(quantity)
     if quantity and item_uid:
         item = cart_items.get(uid = item_uid)
         item.quantity = int(quantity)

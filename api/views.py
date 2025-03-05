@@ -9,8 +9,6 @@ from .serializers import CartItemSerializer, ProfileSerializer, RUserSerializer,
 from users.models import Cart, CartItems, Profile
 from products.models import Product, SizeVariant
 
-from django.contrib.auth.models import User
-
 
 class RegisterAPIview(APIView):
     def post(self, request):
@@ -223,11 +221,11 @@ class RemoveItemToCartAPIview(APIView):
 
 
     
-    
+   
 
 
 
-
+# AAPTxy8BH1VEsoebNVZXo8HurL4Rh7wIaTccHIcpldnDTqVK9vNWo2ajs1bEmSdfxo5nN-yhoO2NZtsXT5GoNy84GKmKPryiW-bBApkNTJjtzFQIOPhMV34W5JRZV3AMANWc1VyuL3hSHWB2v6UCCm6FkPYeCOYAsEdDE4ByBb9vkXJWxDno5RbBI3lzPQ5yTwUKrHsZHeVUYnk-Dy5vrsFJhEY2v4SchKElEUk2qchAln4.AT1_tpxgcRMN
    
 
 
